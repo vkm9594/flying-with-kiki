@@ -1,3 +1,4 @@
+var bgMusic;
 let scenery;
 let rect = [];
 let buildings = [];
@@ -6,6 +7,8 @@ let kiki;
 let up = 0;
 
 function preload() {
+  soundFormats('ogg', 'mp3');
+  bgMusic = loadSound('kiki-theme.mp3');
   scenery = loadImage('buildings/background.jpg');
   seagull = loadImage('buildings/seagull.gif');
   kiki = loadImage('buildings/kiki.png');
@@ -16,6 +19,7 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  bgMusic.play();
   for (let i = 0; i < 6; i++) {
     let x = width;
     let y = height - 400;
