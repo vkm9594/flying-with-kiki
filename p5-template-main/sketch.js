@@ -21,7 +21,7 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  //bgMusic.play();
+  // bgMusic.play();
   for (let i = 0; i < 6; i++) {
     let b = new AddBuilding();
     rect.push(b);
@@ -74,7 +74,7 @@ class AddBirds extends Objects {
     super();
     this.img = seagull;
     this.width = width * 2;
-    this.height = 0;
+    this.height = random(0, 250);
   }
 
   update() {
@@ -111,7 +111,7 @@ class AddCharacter extends Objects {
     push();
     scale(0.5)
     imageMode(CENTER);
-    image(this.img, this.width, this.height);
+    image(kiki, 300, windowHeight * 1.5 + up);
     pop();
   }
 }
