@@ -3,7 +3,9 @@ let scenery;
 let rect = [];
 let buildings = [];
 let seagull;
+let birds;
 let kiki;
+let character;
 let up = 0;
 
 function preload() {
@@ -19,7 +21,7 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  bgMusic.play();
+  //bgMusic.play();
   for (let i = 0; i < 6; i++) {
     let x = width;
     let y = height - 400;
@@ -28,23 +30,18 @@ function setup() {
     let b = new AddBuilding(x, y, w, h);
     rect.push(b);
   }
+  birds = new AddBirds();
+  character = new AddCharacter();
 }
 
 function draw() {
   image(scenery, 0, 0, width, height);
+  
+  birds.update();
+  birds.show();
 
-  push();
-  scale(0.5);
-  translate(-frameCount, 0);
-  image(seagull, width * 2, 0);
-  pop();
-
-  push();
-  scale(0.5)
-  imageMode(CENTER);
-  image(kiki, 300, windowHeight * 1.5 + up);
-  pop();
-  fly();
+  character.fly();
+  character.show();
 
   for (build of rect) {
     build.update();
@@ -53,8 +50,13 @@ function draw() {
 
 }
 
-class AddBuilding {
+class Objects {
+
+}
+
+class AddBuilding extends Objects {
   constructor(x, y, w, h) {
+    super();
     this.x = x;
     this.y = y;
     this.w = w;
@@ -71,11 +73,43 @@ class AddBuilding {
   }
 }
 
-function fly() {
-  if ((keyIsDown(32)) && (up > -windowHeight * 1.5 + 150)) {
-    up -= 5
+class AddBirds extends Objects {
+  constructor() {
+    super();
   }
-  if ((keyIsPressed === false) && (up < 0)) {
-    up += 5
+
+  update() {
+
+  }
+
+  show() {
+    push();
+    scale(0.4);
+    translate(-frameCount, 0);
+    image(seagull, width * 2, 0);
+    pop();
+  }
+}
+
+class AddCharacter extends Objects {
+  constructor() {
+    super();
+  }
+
+  fly() {
+    if ((keyIsDown(32)) && (up > -windowHeight * 1.5 + 150)) {
+      up -= 5
+    }
+    if ((keyIsPressed === false) && (up < 0)) {
+      up += 5
+    }
+  }
+
+  show() {
+    push();
+    scale(0.5)
+    imageMode(CENTER);
+    image(kiki, 300, windowHeight * 1.5 + up);
+    pop();
   }
 }
