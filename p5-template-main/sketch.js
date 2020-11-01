@@ -23,11 +23,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   //bgMusic.play();
   for (let i = 0; i < 6; i++) {
-    let x = width;
-    let y = height - 400;
-    let w = random(600);
-    let h = random(400, 700);
-    let b = new AddBuilding(x, y, w, h);
+    let b = new AddBuilding();
     rect.push(b);
   }
   birds = new AddBirds();
@@ -36,7 +32,7 @@ function setup() {
 
 function draw() {
   image(scenery, 0, 0, width, height);
-  
+
   birds.update();
   birds.show();
 
@@ -55,12 +51,12 @@ class Objects {
 }
 
 class AddBuilding extends Objects {
-  constructor(x, y, w, h) {
+  constructor() {
     super();
-    this.x = x;
-    this.y = y;
-    this.w = w;
-    this.h = h;
+    this.x = width;
+    this.y = height - 400;
+    this.w = random(600);
+    this.h = random(400, 700);
     this.building = random(buildings);
   }
 
@@ -76,6 +72,9 @@ class AddBuilding extends Objects {
 class AddBirds extends Objects {
   constructor() {
     super();
+    this.img = seagull;
+    this.width = width * 2;
+    this.height = 0;
   }
 
   update() {
@@ -86,7 +85,7 @@ class AddBirds extends Objects {
     push();
     scale(0.4);
     translate(-frameCount, 0);
-    image(seagull, width * 2, 0);
+    image(this.img, this.width, this.height);
     pop();
   }
 }
@@ -94,6 +93,9 @@ class AddBirds extends Objects {
 class AddCharacter extends Objects {
   constructor() {
     super();
+    this.img = kiki;
+    this.width = 300;
+    this.height = windowHeight * 1.5 + up;
   }
 
   fly() {
@@ -109,7 +111,7 @@ class AddCharacter extends Objects {
     push();
     scale(0.5)
     imageMode(CENTER);
-    image(kiki, 300, windowHeight * 1.5 + up);
+    image(this.img, this.width, this.height);
     pop();
   }
 }
