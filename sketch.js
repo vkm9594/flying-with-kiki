@@ -1,8 +1,10 @@
 var bgMusic;
+var jumpSound;
+var deathSound;
 let scenery;
 let addBuilding = [];
 let buildings = [];
-let buildingScale = [];
+// let buildingScale = [];
 let seagull;
 let Addbirds = [];
 let kiki;
@@ -12,6 +14,9 @@ let up = 0;
 function preload() {
   soundFormats('ogg', 'mp3');
   bgMusic = loadSound('sounds/kiki-theme.mp3');
+  jumpSound = loadSound('sounds/jump-sound.mp3');
+  deathSound = loadSound('sounds/death-sound.mp3');
+
   scenery = loadImage('images/background.jpg');
   seagull = loadImage('images/seagull.gif');
   kiki = loadImage('images/kiki.png');
@@ -23,6 +28,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   // bgMusic.play();
+  jumpSound.playMode('restart');
   addBuilding.push(new Building);
   Addbirds.push(new Bird);
   Addcharacter = new Character();
@@ -31,26 +37,28 @@ function setup() {
 function draw() {
   image(scenery, 0, 0, width, height);
 
-  for (i = addBuilding.length - 1; i >= 0; i--) {
-    addBuilding[i].update();
-    addBuilding[i].show();
-  }
-
-  for (i = Addbirds.length - 1; i >= 0; i--) {
-    Addbirds[i].update();
-    Addbirds[i].show();
-  }
-
   Addcharacter.fly();
   Addcharacter.show();
 
-  if (frameCount % 200 === 0) {
-    addBuilding.push(new Building);
-    Addbirds.push(new Bird);
+  if (key == ' ') {
+    for (i = addBuilding.length - 1; i >= 0; i--) {
+      addBuilding[i].update();
+      addBuilding[i].show();
+    }
+
+    for (i = Addbirds.length - 1; i >= 0; i--) {
+      Addbirds[i].update();
+      Addbirds[i].show();
+    }
+
+    if (frameCount % 200 === 0) {
+      addBuilding.push(new Building);
+      Addbirds.push(new Bird);
+    }
   }
 }
 
-class Sprite { 
+class Sprite {
   update() {
     this.x -= this.speed;
   }
@@ -68,7 +76,7 @@ class Building extends Sprite {
   }
 
   show() {
-    image(this.building, this.x, this.y);
+    image(this.building, this.x, this.y, this.w, this.h);
   }
 }
 
@@ -97,6 +105,7 @@ class Character {
 
   fly() {
     if ((keyIsDown(32)) && (up > -windowHeight * 1.5 + 150)) {
+      jumpSound.play();
       up -= 5
     }
     if ((keyIsPressed === false) && (up < 0)) {
@@ -108,7 +117,7 @@ class Character {
     push();
     scale(0.5)
     imageMode(CENTER);
-    image(this.img, this.width, windowHeight * 1.5 + up); // why do the constructor variables not work?
+    image(this.img, this.width, windowHeight * 1.5 + up);
     pop();
   }
 }
