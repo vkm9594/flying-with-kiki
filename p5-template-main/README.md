@@ -2,6 +2,8 @@
 
 This code is a side scroller game based on the Studio Ghibli film "Kiki's Delivery Service". 
 
+![](Screenshot.png)
+
 ## Usage
 
 Press space to begin the game. Make sure to avoid the obstacles coming at Kiki!
