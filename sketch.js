@@ -6,9 +6,9 @@ let addBuilding = [];
 let buildings = [];
 // let buildingScale = [];
 let seagull;
-let Addbirds = [];
+let addBirds = [];
 let kiki;
-let Addcharacter;
+let addCharacter;
 let up = 0;
 
 function preload() {
@@ -27,18 +27,15 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  // bgMusic.play();
+  bgMusic.loop();
   jumpSound.playMode('restart');
   addBuilding.push(new Building);
-  Addbirds.push(new Bird);
-  Addcharacter = new Character();
+  addBirds.push(new Bird);
+  addCharacter = new Character();
 }
 
 function draw() {
   image(scenery, 0, 0, width, height);
-
-  Addcharacter.fly();
-  Addcharacter.show();
 
   if (key == ' ') {
     for (i = addBuilding.length - 1; i >= 0; i--) {
@@ -46,16 +43,25 @@ function draw() {
       addBuilding[i].show();
     }
 
-    for (i = Addbirds.length - 1; i >= 0; i--) {
-      Addbirds[i].update();
-      Addbirds[i].show();
+    for (i = addBirds.length - 1; i >= 0; i--) {
+      addBirds[i].update();
+      addBirds[i].show();
     }
 
     if (frameCount % 200 === 0) {
       addBuilding.push(new Building);
-      Addbirds.push(new Bird);
+      addBirds.push(new Bird);
     }
   }
+  
+  addCharacter.fly();
+  addCharacter.show();
+
+  // if(addCharacter.hits(addBuilding) || addCharacter.hits(addBirds)) {
+  //   deathSound.play();
+  //   console.log('GAME OVER');
+  //   noLoop();
+  // }
 }
 
 class Sprite {
@@ -85,14 +91,14 @@ class Bird extends Sprite {
     super();
     this.img = loadImage("images/seagull.gif");
     this.x = width * 3;
-    this.height = random(0, 200);
+    this.y = random(0, 200);
     this.speed = 2.5;
   }
 
   show() {
     push();
     scale(0.4);
-    image(this.img, this.x, this.height);
+    image(this.img, this.x, this.y);
     pop();
   }
 }
@@ -100,7 +106,7 @@ class Bird extends Sprite {
 class Character {
   constructor() {
     this.img = kiki;
-    this.width = 300;
+    this.x = 300;
   }
 
   fly() {
@@ -113,11 +119,15 @@ class Character {
     }
   }
 
+  // hits(Bird) {
+  //   collideRectRect(200, 200, 100, 150, mouseX, mouseY, 50, 75);
+  // }
+
   show() {
     push();
-    scale(0.5)
+    scale(0.5);
     imageMode(CENTER);
-    image(this.img, this.width, windowHeight * 1.5 + up);
+    image(this.img, this.x, windowHeight * 1.5 + up);
     pop();
   }
 }

@@ -1,8 +1,8 @@
 # Flying With Kiki Game
 
-This code is a side scroller game based on the Studio Ghibli film "Kiki's Delivery Service". 
+This code is a side scroller game based on the Studio Ghibli film "Kiki's Delivery Service". It is a collaborative project for Creative Coding Lab at NYU Shanghai.
 
-![](Screenshot.png)
+![](images/Screenshot.png)
 
 ## Usage
 
@@ -14,4 +14,5 @@ Kevin Dai and Vivianna Mo
 
 ## Acknowledgements
 
-Thank you to The Coding Train, Professor Steele, and Linda! Also thank you to Studio Ghibli for being the inspiration of this project.
+Thank you to Professor Steele, Linda, and The Coding Train! Without you guys the code would be a lot less functionable.
+Also thank you to Studio Ghibli for being the inspiration of this project.
