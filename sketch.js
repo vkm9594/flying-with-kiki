@@ -11,12 +11,12 @@ let up = 0;
 
 function preload() {
   soundFormats('ogg', 'mp3');
-  bgMusic = loadSound('kiki-theme.mp3');
-  scenery = loadImage('buildings/background.jpg');
-  seagull = loadImage('buildings/seagull.gif');
-  kiki = loadImage('buildings/kiki.png');
+  bgMusic = loadSound('sounds/kiki-theme.mp3');
+  scenery = loadImage('images/background.jpg');
+  seagull = loadImage('images/seagull.gif');
+  kiki = loadImage('images/kiki.png');
   for (i = 0; i < 6; i++) {
-    buildings[i] = loadImage('buildings/building' + i + '.png');
+    buildings[i] = loadImage('images/building' + i + '.png');
   }
 }
 
@@ -75,7 +75,7 @@ class Building extends Sprite {
 class Bird extends Sprite {
   constructor() {
     super();
-    this.img = loadImage("buildings/seagull.gif");
+    this.img = loadImage("images/seagull.gif");
     this.x = width * 3;
     this.height = random(0, 200);
     this.speed = 2.5;
