@@ -1,11 +1,12 @@
 var bgMusic;
 let scenery;
-let build = [];
+let addBuilding = [];
 let buildings = [];
+let buildingScale = [];
 let seagull;
-let birds = [];
+let Addbirds = [];
 let kiki;
-let character;
+let Addcharacter;
 let up = 0;
 
 function preload() {
@@ -22,38 +23,40 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   // bgMusic.play();
-  build.push(new AddBuilding);
-  birds.push(new AddBirds);
-  character = new AddCharacter();
+  addBuilding.push(new Building);
+  Addbirds.push(new Bird);
+  Addcharacter = new Character();
 }
 
 function draw() {
   image(scenery, 0, 0, width, height);
 
-  for (i = build.length - 1; i >= 0; i--) {
-    build[i].update();
-    build[i].show();
+  for (i = addBuilding.length - 1; i >= 0; i--) {
+    addBuilding[i].update();
+    addBuilding[i].show();
   }
 
-  for (i = birds.length - 1; i >= 0; i--) {
-    birds[i].update();
-    birds[i].show();
+  for (i = Addbirds.length - 1; i >= 0; i--) {
+    Addbirds[i].update();
+    Addbirds[i].show();
   }
 
-  character.fly();
-  character.show();
+  Addcharacter.fly();
+  Addcharacter.show();
 
   if (frameCount % 200 === 0) {
-    build.push(new AddBuilding);
-    birds.push(new AddBirds);
+    addBuilding.push(new Building);
+    Addbirds.push(new Bird);
   }
 }
 
-class Objects {
-
+class Sprite { 
+  update() {
+    this.x -= this.speed;
+  }
 }
 
-class AddBuilding extends Objects {
+class Building extends Sprite {
   constructor() {
     super();
     this.x = width;
@@ -64,44 +67,32 @@ class AddBuilding extends Objects {
     this.speed = 2.5;
   }
 
-  update() {
-    this.x -= this.speed;
-  }
-
   show() {
-    // imageMode(CORNER);
-    image(this.building, this.x, this.y, this.w, this.h);
+    image(this.building, this.x, this.y);
   }
 }
 
-class AddBirds extends Objects {
+class Bird extends Sprite {
   constructor() {
     super();
-    this.img = seagull;
-    this.width = width * 3;
+    this.img = loadImage("buildings/seagull.gif");
+    this.x = width * 3;
     this.height = random(0, 200);
     this.speed = 2.5;
-  }
-
-  update() {
-    this.width -= this.speed;
   }
 
   show() {
     push();
     scale(0.4);
-    // translate(-frameCount * 5, 0);
-    image(this.img, this.width, this.height);
+    image(this.img, this.x, this.height);
     pop();
   }
 }
 
-class AddCharacter extends Objects {
+class Character {
   constructor() {
-    super();
     this.img = kiki;
     this.width = 300;
-    this.height = windowHeight * 1.5 + up;
   }
 
   fly() {
@@ -117,7 +108,7 @@ class AddCharacter extends Objects {
     push();
     scale(0.5)
     imageMode(CENTER);
-    image(kiki, 300, windowHeight * 1.5 + up); // why do the constructor variables not work?
+    image(this.img, this.width, windowHeight * 1.5 + up); // why do the constructor variables not work?
     pop();
   }
 }
