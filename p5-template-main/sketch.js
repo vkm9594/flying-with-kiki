@@ -1,6 +1,6 @@
 var bgMusic;
 let scenery;
-let Addbuilding = [];
+let addBuilding = [];
 let buildings = [];
 let seagull;
 let Addbirds = [];
@@ -22,7 +22,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   // bgMusic.play();
-  Addbuilding.push(new Building);
+  addBuilding.push(new Building);
   Addbirds.push(new Bird);
   Addcharacter = new Character();
 }
@@ -30,9 +30,9 @@ function setup() {
 function draw() {
   image(scenery, 0, 0, width, height);
 
-  for (i = Addbuilding.length - 1; i >= 0; i--) {
-    Addbuilding[i].update();
-    Addbuilding[i].show();
+  for (i = addBuilding.length - 1; i >= 0; i--) {
+    addBuilding[i].update();
+    addBuilding[i].show();
   }
 
   for (i = Addbirds.length - 1; i >= 0; i--) {
@@ -44,7 +44,7 @@ function draw() {
   Addcharacter.show();
 
   if (frameCount % 200 === 0) {
-    Addbuilding.push(new Building);
+    addBuilding.push(new Building);
     Addbirds.push(new Bird);
   }
 }
@@ -75,12 +75,12 @@ class Building extends Sprite {
 class Bird extends Sprite {
   constructor() {
     super();
-    this.img = seagull;
+    this.img = loadImage("buildings/seagull.gif");
     this.x = width * 3;
     this.height = random(0, 200);
     this.speed = 2.5;
   }
-  
+
   show() {
     push();
     scale(0.4);
@@ -94,7 +94,6 @@ class Character {
   constructor() {
     this.img = kiki;
     this.width = 300;
-    this.height = windowHeight * 1.5 + up;
   }
 
   fly() {
@@ -110,7 +109,7 @@ class Character {
     push();
     scale(0.5)
     imageMode(CENTER);
-    image(kiki, 300, windowHeight * 1.5 + up); // why do the constructor variables not work?
+    image(this.img, this.width, windowHeight * 1.5 + up); // why do the constructor variables not work?
     pop();
   }
 }
