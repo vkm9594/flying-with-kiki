@@ -10,6 +10,7 @@ let addBirds = [];
 let kiki;
 let addCharacter;
 let up = 0;
+let gameOver;
 
 function preload() {
   soundFormats('ogg', 'mp3');
@@ -22,6 +23,7 @@ function preload() {
   for (i = 0; i < 6; i++) {
     buildings[i] = loadImage('images/building' + i + '.png');
   }
+  gameOver = loadImage('images/game-over.png');
 }
 
 function setup() {
@@ -60,6 +62,7 @@ function draw() {
 
   // if(addCharacter.hits(addBuilding) || addCharacter.hits(addBirds)) {
   //   deathSound.play();
+  //   image(gameOver, windowWidth, windowHeight);
   //   noLoop();
   // }
 }
@@ -96,13 +99,13 @@ class Building extends Sprite {
     if (this.building === buildings[2]) {
       push();
       scale(0.5);
-      image(buildings[2], this.x * 2, this.y - 150);
+      image(buildings[2], this.x * 2, this.y - 300);
       pop();
     }
     if (this.building === buildings[3]) {
       push();
       scale(1.5);
-      image(buildings[3], this.x * 0.667, this.y - 700);
+      image(buildings[3], this.x * 0.667, this.y - 690);
       pop();
     }
     if (this.building === buildings[4]) {
