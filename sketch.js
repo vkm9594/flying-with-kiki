@@ -27,9 +27,10 @@ function preload() {
 function setup() {
   createCanvas(windowWidth - 2, windowHeight - 3);
   bgMusic.loop();
-  jumpSound.playMode('restart');
   bgMusic.setVolume(0.2);
+  jumpSound.playMode('restart');
   jumpSound.setVolume(0.1);
+  deathSound.setVolume(0.1);
   addBuilding.push(new Building);
   addBirds.push(new Bird);
   addCharacter = new Character();
