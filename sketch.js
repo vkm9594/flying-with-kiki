@@ -2,6 +2,8 @@ var bgMusic;
 var jumpSound;
 var deathSound;
 let scenery;
+let clouds = [];
+let addClouds = [];
 let addBuilding = [];
 let buildings = [];
 let buildingScale = [];
@@ -18,6 +20,9 @@ function preload() {
   jumpSound = loadSound('sounds/jump-sound.mp3');
   deathSound = loadSound('sounds/death-sound.mp3');
   scenery = loadImage('images/background.jpg');
+  for (i = 0; i < 4; i++) {
+    clouds[i] = loadImage('images/cloud' + i + '.png');
+  }
   seagull = loadImage('images/seagull.gif');
   kiki = loadImage('images/kiki.png');
   for (i = 0; i < 6; i++) {
@@ -33,6 +38,7 @@ function setup() {
   jumpSound.playMode('restart');
   jumpSound.setVolume(0.1);
   deathSound.setVolume(0.1);
+  addClouds.push(new Cloud);
   addBuilding.push(new Building);
   addBirds.push(new Bird);
   addCharacter = new Character();
@@ -42,6 +48,11 @@ function draw() {
   image(scenery, 0, 0, width, height);
 
   if (key == ' ') {
+    for (i = addClouds.length - 1; i >= 0; i--) {
+      addClouds[i].update();
+      addClouds[i].show();
+    }
+
     for (i = addBuilding.length - 1; i >= 0; i--) {
       addBuilding[i].update();
       addBuilding[i].show();
@@ -53,8 +64,13 @@ function draw() {
     }
 
     if (frameCount % 300 === 0) {
+      addClouds.push(new Cloud);
       addBuilding.push(new Building);
       addBirds.push(new Bird);
+    }
+
+    if (frameCount % 500 === 0) {
+      addClouds.push(new Cloud);
     }
   }
   addCharacter.fly();
@@ -162,6 +178,27 @@ class Character {
     scale(0.5);
     imageMode(CENTER);
     image(this.img, this.x, windowHeight * 1.5 + up);
+    pop();
+  }
+
+}
+
+class Cloud {
+  constructor() {
+    this.x = 0;
+    this.y = random(0, 2000);
+    this.cloud = random(clouds);
+    this.speed = 0.025;
+  }
+
+  update() {
+    this.x += this.speed; // clouds just appear on the screen instead of sliding in, need to fix
+  }
+
+  show() {
+    push();
+    scale(0.13);
+    image(this.cloud, this.x * 200, this.y);
     pop();
   }
 
