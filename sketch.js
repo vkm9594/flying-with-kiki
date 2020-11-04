@@ -4,7 +4,7 @@ var deathSound;
 let scenery;
 let addBuilding = [];
 let buildings = [];
-// let buildingScale = [];
+let buildingScale = [];
 let seagull;
 let addBirds = [];
 let kiki;
@@ -16,7 +16,6 @@ function preload() {
   bgMusic = loadSound('sounds/kiki-theme.mp3');
   jumpSound = loadSound('sounds/jump-sound.mp3');
   deathSound = loadSound('sounds/death-sound.mp3');
-
   scenery = loadImage('images/background.jpg');
   seagull = loadImage('images/seagull.gif');
   kiki = loadImage('images/kiki.png');
@@ -26,7 +25,8 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth - 2, windowHeight - 3);
+  // bgMusic.volume(0.2);
   bgMusic.loop();
   jumpSound.playMode('restart');
   addBuilding.push(new Building);
@@ -53,13 +53,11 @@ function draw() {
       addBirds.push(new Bird);
     }
   }
-  
   addCharacter.fly();
   addCharacter.show();
 
   // if(addCharacter.hits(addBuilding) || addCharacter.hits(addBirds)) {
   //   deathSound.play();
-  //   console.log('GAME OVER');
   //   noLoop();
   // }
 }
@@ -74,15 +72,53 @@ class Building extends Sprite {
   constructor() {
     super();
     this.x = width;
-    this.y = height - 350;
-    this.w = random(600);
-    this.h = random(400, 700);
+    this.y = windowHeight;
+    // this.w = random(600);
+    // this.h = random(400, 700);
     this.building = random(buildings);
     this.speed = 2.5;
   }
 
   show() {
-    image(this.building, this.x, this.y, this.w, this.h);
+    // for (let build of buildingScale) {
+      if (this.building === buildings[0]) {
+        push();
+        scale();
+        image(buildings[0], this.x, this.y - 500);
+        pop();
+      }
+      if (this.building === buildings[1]) {
+        push();
+        scale(0.6)
+        image(buildings[1], this.x * 3, this.y - 600);
+        pop();
+      }
+      if (this.building === buildings[2]) {
+        push();
+        scale(0.45)
+        image(buildings[2], this.x * 2, this.y - 150);
+        pop();
+      }
+      if (this.building === buildings[3]) {
+        push();
+        scale(1.4);
+        image(buildings[3], this.x, this.y - 650);
+        pop();
+      }
+      if (this.building === buildings[4]) {
+        push();
+        scale(0.5);
+        image(buildings[4], this.x * 2, this.y - 350);
+        pop();
+      }
+      if (this.building === buildings[5]) {
+        push();
+        scale(0.5);
+        image(buildings[5], this.x * 2, this.y - 300);
+        pop();
+      }
+    // }
+    // image(this.building, this.x, this.y, this.w, this.h);
   }
 }
 
@@ -111,6 +147,7 @@ class Character {
 
   fly() {
     if ((keyIsDown(32)) && (up > -windowHeight * 1.5 + 150)) {
+      // jumpSound.volume(0.5);
       jumpSound.play();
       up -= 5
     }
@@ -119,10 +156,6 @@ class Character {
     }
   }
 
-  // hits(Bird) {
-  //   collideRectRect(200, 200, 100, 150, mouseX, mouseY, 50, 75);
-  // }
-
   show() {
     push();
     scale(0.5);
@@ -130,4 +163,5 @@ class Character {
     image(this.img, this.x, windowHeight * 1.5 + up);
     pop();
   }
+  
 }
