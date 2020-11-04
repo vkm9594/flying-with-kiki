@@ -48,7 +48,7 @@ function draw() {
       addBirds[i].show();
     }
 
-    if (frameCount % 300 === 0) {
+    if (frameCount % 300 === 0) { // button press timing can result in double building creating in begining
       addBuilding.push(new Building);
       addBirds.push(new Bird);
     }
@@ -60,6 +60,8 @@ function draw() {
   //   deathSound.play();
   //   noLoop();
   // }
+
+  console.log(buildings[4].width)
 }
 
 class Sprite {
@@ -74,44 +76,53 @@ class Building extends Sprite {
     this.x = width;
     this.y = windowHeight;
     this.building = random(buildings);
+    // this.building = buildings[Math.floor(Math.random() * 2)];
+    // this.building = buildings[5]
     this.speed = 2.5;
   }
 
   show() {
-    if (this.building === buildings[0]) {
+    if (this.building === buildings[0]) { // moves at base speed
       push();
       scale();
       image(buildings[0], this.x, this.y - 500);
+      fill('red')
+      circle(this.x, this.y, 25)
       pop();
     }
     if (this.building === buildings[1]) {
       push();
-      scale(0.6)
-      image(buildings[1], this.x * 2, this.y - 600);
+      scale(0.5)  
+      image(buildings[1], this.x * 2, this.y - 340);
+      // image(buildings[1], this.x + buildings[1].width, this.y - 600);
       pop();
     }
     if (this.building === buildings[2]) {
       push();
-      scale(0.45)
-      image(buildings[2], this.x * 2, this.y - 150);
+      scale(0.5)
+      image(buildings[2], this.x * 2, this.y - 200);
+      // image(buildings[2], this.x + buildings[2].width, this.y - 150);
       pop();
     }
     if (this.building === buildings[3]) {
       push();
-      scale(1.4);
-      image(buildings[3], this.x * 0.8, this.y - 650);
+      scale(1.5);
+      image(buildings[3], this.x * 0.667, this.y - 700);
+      // image(buildings[3], this.x - buildings[3].width * 0.2, this.y - 650);
       pop();
     }
     if (this.building === buildings[4]) {
       push();
       scale(0.5);
-      image(buildings[4], this.x * 2, this.y - 350);
+      image(buildings[4], this.x * 2, this.y - 300);
+      // image(buildings[4], this.x + buildings[4].width, this.y - 350);
       pop();
     }
     if (this.building === buildings[5]) {
       push();
       scale(0.5);
       image(buildings[5], this.x * 2, this.y - 300);
+      // image(buildings[5], this.x + buildings[5].width, this.y - 300)
       pop();
     }
   }
