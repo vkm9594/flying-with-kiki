@@ -48,7 +48,7 @@ function draw() {
       addBirds[i].show();
     }
 
-    if (frameCount % 200 === 0) {
+    if (frameCount % 300 === 0) {
       addBuilding.push(new Building);
       addBirds.push(new Bird);
     }
@@ -73,52 +73,47 @@ class Building extends Sprite {
     super();
     this.x = width;
     this.y = windowHeight;
-    // this.w = random(600);
-    // this.h = random(400, 700);
     this.building = random(buildings);
     this.speed = 2.5;
   }
 
   show() {
-    // for (let build of buildingScale) {
-      if (this.building === buildings[0]) {
-        push();
-        scale();
-        image(buildings[0], this.x, this.y - 500);
-        pop();
-      }
-      if (this.building === buildings[1]) {
-        push();
-        scale(0.6)
-        image(buildings[1], this.x * 3, this.y - 600);
-        pop();
-      }
-      if (this.building === buildings[2]) {
-        push();
-        scale(0.45)
-        image(buildings[2], this.x * 2, this.y - 150);
-        pop();
-      }
-      if (this.building === buildings[3]) {
-        push();
-        scale(1.4);
-        image(buildings[3], this.x, this.y - 650);
-        pop();
-      }
-      if (this.building === buildings[4]) {
-        push();
-        scale(0.5);
-        image(buildings[4], this.x * 2, this.y - 350);
-        pop();
-      }
-      if (this.building === buildings[5]) {
-        push();
-        scale(0.5);
-        image(buildings[5], this.x * 2, this.y - 300);
-        pop();
-      }
-    // }
-    // image(this.building, this.x, this.y, this.w, this.h);
+    if (this.building === buildings[0]) {
+      push();
+      scale();
+      image(buildings[0], this.x, this.y - 500);
+      pop();
+    }
+    if (this.building === buildings[1]) {
+      push();
+      scale(0.6)
+      image(buildings[1], this.x * 2, this.y - 600);
+      pop();
+    }
+    if (this.building === buildings[2]) {
+      push();
+      scale(0.45)
+      image(buildings[2], this.x * 2, this.y - 150);
+      pop();
+    }
+    if (this.building === buildings[3]) {
+      push();
+      scale(1.4);
+      image(buildings[3], this.x * 0.8, this.y - 650);
+      pop();
+    }
+    if (this.building === buildings[4]) {
+      push();
+      scale(0.5);
+      image(buildings[4], this.x * 2, this.y - 350);
+      pop();
+    }
+    if (this.building === buildings[5]) {
+      push();
+      scale(0.5);
+      image(buildings[5], this.x * 2, this.y - 300);
+      pop();
+    }
   }
 }
 
@@ -163,5 +158,5 @@ class Character {
     image(this.img, this.x, windowHeight * 1.5 + up);
     pop();
   }
-  
+
 }
