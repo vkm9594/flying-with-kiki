@@ -88,20 +88,20 @@ class Building extends Sprite {
     }
     if (this.building === buildings[1]) {
       push();
-      scale(0.6);
+      scale(0.5);
       image(buildings[1], this.x * 2, this.y - 600);
       pop();
     }
     if (this.building === buildings[2]) {
       push();
-      scale(0.45);
-      image(buildings[2], this.x * 2.5, this.y - 150);
+      scale(0.5);
+      image(buildings[2], this.x * 2, this.y - 150);
       pop();
     }
     if (this.building === buildings[3]) {
       push();
-      scale(1.4);
-      image(buildings[3], this.x * 0.6, this.y - 650);
+      scale(1.5);
+      image(buildings[3], this.x * 0.667, this.y - 650);
       pop();
     }
     if (this.building === buildings[4]) {
