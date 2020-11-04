@@ -76,6 +76,7 @@ class Building extends Sprite {
     this.x = width;
     this.y = windowHeight;
     this.building = random(buildings);
+    // this.building = buildings[5];
     this.speed = 2.5;
   }
 
@@ -89,7 +90,7 @@ class Building extends Sprite {
     if (this.building === buildings[1]) {
       push();
       scale(0.5);
-      image(buildings[1], this.x * 2, this.y - 600);
+      image(buildings[1], this.x * 2, this.y - 325);
       pop();
     }
     if (this.building === buildings[2]) {
@@ -101,13 +102,13 @@ class Building extends Sprite {
     if (this.building === buildings[3]) {
       push();
       scale(1.5);
-      image(buildings[3], this.x * 0.667, this.y - 650);
+      image(buildings[3], this.x * 0.667, this.y - 700);
       pop();
     }
     if (this.building === buildings[4]) {
       push();
       scale(0.5);
-      image(buildings[4], this.x * 2, this.y - 350);
+      image(buildings[4], this.x * 2, this.y - 300);
       pop();
     }
     if (this.building === buildings[5]) {
