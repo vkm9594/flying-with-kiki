@@ -26,9 +26,10 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth - 2, windowHeight - 3);
-  // bgMusic.volume(0.2);
   bgMusic.loop();
   jumpSound.playMode('restart');
+  bgMusic.setVolume(0.2);
+  jumpSound.setVolume(0.1);
   addBuilding.push(new Building);
   addBirds.push(new Bird);
   addCharacter = new Character();
@@ -86,20 +87,20 @@ class Building extends Sprite {
     }
     if (this.building === buildings[1]) {
       push();
-      scale(0.6)
+      scale(0.6);
       image(buildings[1], this.x * 2, this.y - 600);
       pop();
     }
     if (this.building === buildings[2]) {
       push();
-      scale(0.45)
-      image(buildings[2], this.x * 2, this.y - 150);
+      scale(0.45);
+      image(buildings[2], this.x * 2.5, this.y - 150);
       pop();
     }
     if (this.building === buildings[3]) {
       push();
       scale(1.4);
-      image(buildings[3], this.x * 0.8, this.y - 650);
+      image(buildings[3], this.x * 0.6, this.y - 650);
       pop();
     }
     if (this.building === buildings[4]) {
