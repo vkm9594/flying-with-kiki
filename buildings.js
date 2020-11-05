@@ -6,17 +6,19 @@ class Building extends Sprite {
     this.y = windowHeight;
     // this.building = random(buildings);
     this.building = buildings[0];
-    this.speed = 5;
+    this.speed = 2.5;
   }
 
   show() {
     if (this.building === buildings[0]) {
       push();
-      scale(0.8);
-      // strokeWeight(4)
-      // stroke('red')
+      //scale(0.8);
+      image(buildings[0], this.x * 1.25, this.y - 405 );
+      noFill();
+      strokeWeight(4)
+      stroke('red')
+      rect(this.x * 1.25, this.y - 405, buildings[0].width, buildings[0].height)
       // line(0, height - 320 + buildings[1].height, this.x, height - 320 + buildings[1].height)
-      image(buildings[0], this.x * 1.25, this.y - 320);
       pop();
     }
     if (this.building === buildings[1]) {

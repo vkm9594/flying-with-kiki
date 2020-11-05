@@ -74,16 +74,10 @@ function draw() {
   addCharacter.fly();
   addCharacter.show();
 
-  // if(addCharacter.hits(addBuilding) || addCharacter.hits(addBirds)) {
-  //   deathSound.play();
-  //   image(gameOver, windowWidth, windowHeight);
-  //   noLoop();
-  // }
-
   for(var i = 0; i < addBirds.length; i++) {
     if(addCharacter.hits(addBirds[i])){ // kiki checks every bird (hopefully)
       deathSound.play();
-      image(gameOver, windowWidth, windowHeight);
+      image(gameOver, 0, 0, windowWidth, windowHeight);
       noLoop();
     }
   }
@@ -91,7 +85,7 @@ function draw() {
   for(var j = 0; i < addBuilding.length; j++) {
     if(addCharacter.hits2(addBuilding[j])) {
       deathSound.play();
-      image(gameOver, windowWidth, windowHeight); // game over image not appearing?
+      image(gameOver, 0, 0, windowWidth, windowHeight); // game over image not appearing?
       noLoop();
     }
   }

@@ -45,6 +45,7 @@ class Character {
     imageMode(CENTER);
     image(this.img, this.x, windowHeight * 1.5 + up);
 
+    noFill();
     stroke('red')
     circle(this.x, windowHeight * 1.5 + up, this.radius * 2); // hitbox
 

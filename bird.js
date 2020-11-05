@@ -3,7 +3,7 @@ class Bird extends Sprite {
     super();
     this.img = loadImage("images/seagull.gif");
     this.x = width * 2;
-    this.y = random(100, 300);
+    this.y = random(100, 275);
     this.radius = 55;
     this.speed = 5;
 
@@ -15,6 +15,7 @@ class Bird extends Sprite {
     imageMode(CENTER);
     image(this.img, this.x, this.y);
 
+    noFill();
     stroke('red')
     circle(this.x, this.y, this.radius * 2) //hitbox
 
