@@ -16,9 +16,12 @@ class Character {
     }
 
     this.hits2 = function(other2) {
-      var upper = this.height + -windowHeight * 1.5 + 150;
-      var left = 0;
-      var d = dist(this.x, windowHeight * 1.5 + up, buildings[0].width, buildings[0].height);
+      var d2 = dist(this.x, windowHeight * 1.5 + up, other2.x, other2.y - 255)
+        if (d < this.radius + other2.radius) {
+          return true;
+        } else {
+          return false;
+        }
 
       // if (other2 === buildings[0]) {
       //   if(upper < 500 || left < 99999) {
@@ -27,7 +30,7 @@ class Character {
       //     return false;
       //   }
       // }
-      
+
       if (other2 === buildings[0]) {
         if(d < buildings[0].width + this.radius) {
           return true;

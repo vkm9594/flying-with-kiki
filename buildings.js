@@ -2,23 +2,29 @@
 class Building extends Sprite {
   constructor() {
     super();
-    this.x = width;
+    this.x = width + 300;
     this.y = windowHeight;
+    this.yConstant = 0;
     // this.building = random(buildings);
     this.building = buildings[0];
     this.speed = 2.5;
+    this.radius = 200;
+
   }
 
   show() {
     if (this.building === buildings[0]) {
       push();
+      circle(this.x, this.y - 230 , this.radius * 2);
       scale(1.05);
-      image(buildings[0], this.x * 0.9523, this.y - 470 );
+      imageMode(CENTER)
+      image(buildings[0], this.x * 0.9523, this.y - 250);
       noFill();
-      strokeWeight(4);
-      stroke('red');
-      rect(this.x * 0.9523, this.y - 470, buildings[0].width, buildings[0].height); // hitbox?
-      // line(0, height - 320 + buildings[1].height, this.x, height - 320 + buildings[1].height)
+      // circle(this.x, this.y - 255 , this.radius * 2);
+      // noFill();
+      // strokeWeight(4);
+      // stroke('red');
+      // rect(this.x * 0.9523, this.y - 470, buildings[0].width, buildings[0].height); // hitbox?
       pop();
     }
     if (this.building === buildings[1]) {
