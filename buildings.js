@@ -15,7 +15,7 @@ class Building extends Sprite {
     if (this.building === buildings[0]) {
       push();
       scale(1.05);
-      image(buildings[0], this.x * 1.25, this.y - 470 );
+      image(buildings[0], this.x * 0.9523, this.y - 470 );
       noFill();
       strokeWeight(3);
       stroke('red');
@@ -26,7 +26,7 @@ class Building extends Sprite {
     if (this.building === buildings[1]) {
       push();
       scale(0.5);
-      image(buildings[1], this.x * 2.5, this.y - 250);
+      image(buildings[1], this.x * 2, this.y - 250);
       pop();
     }
     if (this.building === buildings[2]) {
@@ -44,7 +44,7 @@ class Building extends Sprite {
     if (this.building === buildings[4]) {
       push();
       scale(0.45);
-      image(buildings[4], this.x * 2.5, this.y - 15);
+      image(buildings[4], this.x * 2.222, this.y - 15);
       pop();
     }
     if (this.building === buildings[5]) {
