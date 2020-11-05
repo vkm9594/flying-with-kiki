@@ -3,7 +3,7 @@ class Cloud {
     this.x = -10;
     this.y = random(0, 2000);
     this.cloud = random(clouds);
-    this.speed = 0.03;
+    this.speed = 0.05;
   }
 
   update() {

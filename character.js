@@ -4,7 +4,7 @@ class Character {
     this.x = 300;
     this.width = kiki.width / 2;
     this.height = kiki.height / 2;
-    this.radius = 100;
+    this.radius = 105;
 
     this.hits = function(other) {
       var d = dist(this.x, windowHeight * 1.5 + up, other.x, other.y);
@@ -18,13 +18,22 @@ class Character {
     this.hits2 = function(other2) {
       var upper = this.height + -windowHeight * 1.5 + 150;
       var left = 0;
+      var d = dist(this.x, windowHeight * 1.5 + up, buildings[0].width, buildings[0].height);
 
-      if (other2 === building[0]) {
-        if(upper < 500 || left < 99999) {
+      // if (other2 === buildings[0]) {
+      //   if(upper < 500 || left < 99999) {
+      //     return true;
+      //   } else {
+      //     return false;
+      //   }
+      // }
+      if (other2 === buildings[0]) {
+        if(d < buildings[0].width + this.radius) {
           return true;
         } else {
           return false;
         }
+
       }
     }
   }
