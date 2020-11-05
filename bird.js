@@ -14,11 +14,9 @@ class Bird extends Sprite {
     scale(0.5);
     imageMode(CENTER);
     image(this.img, this.x, this.y);
-
-    noFill();
-    stroke('red')
-    circle(this.x, this.y, this.radius * 2) //hitbox
-
+    // noFill();
+    // stroke('red')
+    // circle(this.x, this.y, this.radius * 2) //hitbox
     pop();
   }
 }
