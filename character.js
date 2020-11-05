@@ -27,6 +27,7 @@ class Character {
       //     return false;
       //   }
       // }
+      
       if (other2 === buildings[0]) {
         if(d < buildings[0].width + this.radius) {
           return true;

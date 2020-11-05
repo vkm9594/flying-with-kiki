@@ -2,7 +2,7 @@ class Bird extends Sprite {
   constructor() {
     super();
     this.img = loadImage("images/seagull.gif");
-    this.x = width * 2;
+    this.x = width * 2.5;
     this.y = random(100, 275);
     this.radius = 55;
     this.speed = 5;
