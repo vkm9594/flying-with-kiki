@@ -42,7 +42,7 @@ class Character {
 
   fly() {
     if ((keyIsDown(32)) && (up > -windowHeight * 1.5 + 150)) {
-      // jumpSound.play();
+      jumpSound.play();
       up -= 5;
     }
     if ((keyIsPressed === false) && (up < 0)) {

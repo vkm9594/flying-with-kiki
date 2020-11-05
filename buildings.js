@@ -19,7 +19,7 @@ class Building extends Sprite {
       noFill();
       strokeWeight(3);
       stroke('red');
-      rect(this.x * 1.25, this.y - 470, buildings[0].width, buildings[0].height);
+      rect(this.x * 0.9523, this.y - 470, buildings[0].width, buildings[0].height);
       // line(0, height - 320 + buildings[1].height, this.x, height - 320 + buildings[1].height)
       pop();
     }
