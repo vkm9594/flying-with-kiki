@@ -33,10 +33,10 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth - 2, windowHeight - 3);
-  bgMusic.loop();
-  bgMusic.setVolume(0.2);
-  jumpSound.playMode('restart');
-  jumpSound.setVolume(0.1);
+  // bgMusic.loop();
+  // bgMusic.setVolume(0.2);
+  // jumpSound.playMode('restart');
+  // jumpSound.setVolume(0.1);
   deathSound.setVolume(0.1);
   addClouds.push(new Cloud);
   addBuilding.push(new Building);
@@ -63,7 +63,7 @@ function draw() {
       addBirds[i].show();
     }
 
-    if (frameCount % 300 === 0) {
+    if (frameCount % 100 === 0) { // CHANGED FOR TESTING
       addClouds.push(new Cloud);
       addBuilding.push(new Building);
       addBirds.push(new Bird);
@@ -81,6 +81,23 @@ function draw() {
   //   image(gameOver, windowWidth, windowHeight);
   //   noLoop();
   // }
+
+  for(var i = 0; i < addBirds.length; i++) {
+    if(addCharacter.hits(addBirds[i])){ // kiki checks every bird (hopefully)
+      deathSound.play();
+      image(gameOver, windowWidth, windowHeight);
+      noLoop();
+    }
+  }
+
+  for(var j = 0; i < addBuilding.length; j++) {
+    if(addCharacter.hits2(addBuilding[j])) {
+      deathSound.play();
+      image(gameOver, windowWidth, windowHeight); // game over image not appearing?
+      noLoop();
+    }
+  }
+
 }
 
 class Sprite {

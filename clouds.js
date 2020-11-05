@@ -1,6 +1,6 @@
 class Cloud {
   constructor() {
-    this.x = 0;
+    this.x = -10;
     this.y = random(0, 2000);
     this.cloud = random(clouds);
     this.speed = 0.025;
