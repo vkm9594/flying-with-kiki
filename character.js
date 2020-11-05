@@ -7,7 +7,7 @@ class Character {
     this.radius = 105;
 
     this.hits = function(other) {
-      var d = dist(this.x, windowHeight * 1.5 + up, other.x, other.y + (sin(frameCount/30) * 300));
+      var d = dist(this.x, windowHeight * 1.5 + up, other.x, other.y + (sin(frameCount/50) * 300));
       if (d < this.radius + other.radius) {
         return true;
       } else {
