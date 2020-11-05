@@ -39,7 +39,7 @@ function setup() {
   // bgMusic.setVolume(0.2);
   // jumpSound.playMode('restart');
   // jumpSound.setVolume(0.1);
-  deathSound.setVolume(0.1);
+  // deathSound.setVolume(0.2);
   addClouds.push(new Cloud);
   addBuilding.push(new Building);
   addBirds.push(new Bird);
@@ -76,6 +76,7 @@ function draw() {
 
   for(var i = 0; i < addBirds.length; i++) {
     if(addCharacter.hits(addBirds[i])){ // kiki checks every bird (hopefully)
+      bgMusic.stop();
       deathSound.play();
       image(gameOver, 0, 0, windowWidth, windowHeight);
       noLoop();
@@ -84,6 +85,7 @@ function draw() {
 
   for(var j = 0; i < addBuilding.length; j++) {
     if(addCharacter.hits2(addBuilding[j])) {
+      bgMusic.stop();
       deathSound.play();
       image(gameOver, 0, 0, windowWidth, windowHeight); // game over image not appearing?
       noLoop();

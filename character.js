@@ -18,7 +18,7 @@ class Character {
     this.hits2 = function(other2) {
       var upper = this.height + -windowHeight * 1.5 + 150;
       var left = 0;
-      var d = dist(this.x, windowHeight * 1.5 + up, buildings[0].width, buildings[0].height);
+      var d = dist(this.x, windowHeight * 1.5 + up, buildings[0].x * 1.25, buildings[0].y - 470);
 
       // if (other2 === buildings[0]) {
       //   if(upper < 500 || left < 99999) {
@@ -27,24 +27,26 @@ class Character {
       //     return false;
       //   }
       // }
-      if (other2 === buildings[0]) {
-        if(d < buildings[0].width + this.radius) {
-          return true;
-        } else {
-          return false;
-        }
-
-      }
+    //   if (other2 === buildings[0]) {
+    //     if(d < buildings[0].width + this.radius) {
+    //       return true;
+    //     } else {
+    //       return false;
+    //     }
+    //   }
     }
+    
   }
+
+  
 
   fly() {
     if ((keyIsDown(32)) && (up > -windowHeight * 1.5 + 150)) {
       // jumpSound.play();
-      up -= 5
+      up -= 5;
     }
     if ((keyIsPressed === false) && (up < 0)) {
-      up += 5
+      up += 5;
     }
   }
 

@@ -4,6 +4,8 @@ class Building extends Sprite {
     super();
     this.x = width;
     this.y = windowHeight;
+    this.width = buildings[0].width;
+    this.height = buildings[0].height;
     // this.building = random(buildings);
     this.building = buildings[0];
     this.speed = 2.5;
@@ -15,9 +17,9 @@ class Building extends Sprite {
       scale(1.05);
       image(buildings[0], this.x * 1.25, this.y - 470 );
       noFill();
-      strokeWeight(4)
-      stroke('red')
-      rect(this.x * 1.25, this.y - 470, buildings[0].width, buildings[0].height)
+      strokeWeight(3);
+      stroke('red');
+      rect(this.x * 1.25, this.y - 470, buildings[0].width, buildings[0].height);
       // line(0, height - 320 + buildings[1].height, this.x, height - 320 + buildings[1].height)
       pop();
     }
