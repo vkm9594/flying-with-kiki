@@ -69,7 +69,7 @@ function draw() {
       addBirds.push(new Bird);
     }
 
-    if (frameCount % 500 === 0) {
+    if (frameCount % 700 === 0) {
       addClouds.push(new Cloud);
     }
   }
@@ -87,119 +87,4 @@ class Sprite {
   update() {
     this.x -= this.speed;
   }
-}
-
-class Building extends Sprite {
-  constructor() {
-    super();
-    this.x = width;
-    this.y = windowHeight;
-    this.building = random(buildings);
-    // this.building = buildings[5];
-    this.speed = 2.5;
-  }
-
-  show() {
-    if (this.building === buildings[0]) {
-      push();
-      scale();
-      image(buildings[0], this.x, this.y - 500);
-      pop();
-    }
-    if (this.building === buildings[1]) {
-      push();
-      scale(0.5);
-      image(buildings[1], this.x * 2, this.y - 325);
-      pop();
-    }
-    if (this.building === buildings[2]) {
-      push();
-      scale(0.5);
-      image(buildings[2], this.x * 2, this.y - 300);
-      pop();
-    }
-    if (this.building === buildings[3]) {
-      push();
-      scale(1.5);
-      image(buildings[3], this.x * 0.667, this.y - 690);
-      pop();
-    }
-    if (this.building === buildings[4]) {
-      push();
-      scale(0.5);
-      image(buildings[4], this.x * 2, this.y - 300);
-      pop();
-    }
-    if (this.building === buildings[5]) {
-      push();
-      scale(0.5);
-      image(buildings[5], this.x * 2, this.y - 300);
-      pop();
-    }
-  }
-}
-
-class Bird extends Sprite {
-  constructor() {
-    super();
-    this.img = loadImage("images/seagull.gif");
-    this.x = width * 3;
-    this.y = random(0, 200);
-    this.speed = 2.5;
-  }
-
-  show() {
-    push();
-    scale(0.4);
-    image(this.img, this.x, this.y);
-    pop();
-  }
-}
-
-class Character {
-  constructor() {
-    this.img = kiki;
-    this.x = 300;
-  }
-
-  fly() {
-    if ((keyIsDown(32)) && (up > -windowHeight * 1.5 + 150)) {
-      // jumpSound.volume(0.5);
-      jumpSound.play();
-      up -= 5
-    }
-    if ((keyIsPressed === false) && (up < 0)) {
-      up += 5
-    }
-  }
-
-  show() {
-    push();
-    scale(0.5);
-    imageMode(CENTER);
-    image(this.img, this.x, windowHeight * 1.5 + up);
-    pop();
-  }
-
-}
-
-class Cloud {
-  constructor() {
-    this.x = 0;
-    this.y = random(0, 2000);
-    this.cloud = random(clouds);
-    this.speed = 0.025;
-  }
-
-  update() {
-    this.x += this.speed; // clouds just appear on the screen instead of sliding in, need to fix
-  }
-
-  show() {
-    push();
-    scale(0.13);
-    image(this.cloud, this.x * 200, this.y);
-    pop();
-  }
-
 }
