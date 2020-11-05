@@ -16,9 +16,18 @@ class Character {
     }
 
     this.hits2 = function(other2) {
+<<<<<<< HEAD
+      var d2 = dist(this.x, windowHeight * 1.5 + up, other2.x, other2.y - 255)
+        if (d < this.radius + other2.radius) {
+          return true;
+        } else {
+          return false;
+        }
+=======
       var upper = this.height + -windowHeight * 1.5 + 150;
       var left = 0;
       var d = dist(this.x, windowHeight * 1.5 + up, buildings[0].x * 1.25, buildings[0].y - 470);
+>>>>>>> 36aa8c9319921c034dce1ee0ceb1449740b0d858
 
       // if (other2 === buildings[0]) {
       //   if(upper < 500 || left < 99999) {
@@ -27,6 +36,17 @@ class Character {
       //     return false;
       //   }
       // }
+<<<<<<< HEAD
+
+      if (other2 === buildings[0]) {
+        if(d < buildings[0].width + this.radius) {
+          return true;
+        } else {
+          return false;
+        }
+
+      }
+=======
     //   if (other2 === buildings[0]) {
     //     if(d < buildings[0].width + this.radius) {
     //       return true;
@@ -34,6 +54,7 @@ class Character {
     //       return false;
     //     }
     //   }
+>>>>>>> 36aa8c9319921c034dce1ee0ceb1449740b0d858
     }
     
   }

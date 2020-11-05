@@ -98,6 +98,8 @@ function draw() {
     }
   }
 
+  circle(this.x - frameCount, this.y - 255 , this.radius * 2);
+
 }
 
 function mousePressed() {
