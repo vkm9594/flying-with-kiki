@@ -21,7 +21,7 @@ class Building extends Sprite {
       // circle((this.x * 0.9523), this.y - 230 , this.radius * 2);
       
       //image(buildings[0], this.x * 0.9523, this.y - 470);
-      image(buildings[0], this.x, this.y - buildings[0].height);
+      image(buildings[0], this.x * 0.9523, this.y * 0.9523 - buildings[0].height);
 
       // circle(this.x, this.y - 255 , this.radius * 2);
       // noFill();
