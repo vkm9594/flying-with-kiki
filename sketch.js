@@ -1,6 +1,7 @@
 var bgMusic;
 var jumpSound;
 var deathSound;
+let titleImage;
 let scenery;
 let clouds = [];
 let addClouds = [];
@@ -19,6 +20,7 @@ function preload() {
   bgMusic = loadSound('sounds/kiki-theme.mp3');
   jumpSound = loadSound('sounds/jump-sound.mp3');
   deathSound = loadSound('sounds/death-sound.mp3');
+  titleImage = loadImage('images/title-screen.jpg');
   scenery = loadImage('images/background.jpg');
   for (i = 0; i < 4; i++) {
     clouds[i] = loadImage('images/cloud' + i + '.png');
@@ -45,30 +47,26 @@ function setup() {
 }
 
 function draw() {
-  image(scenery, 0, 0, width, height);
-
+ // beginGame();
+ image(scenery, 0, 0, width, height);
   if (key == ' ') {
     for (i = addClouds.length - 1; i >= 0; i--) {
       addClouds[i].update();
       addClouds[i].show();
     }
-
     for (i = addBuilding.length - 1; i >= 0; i--) {
       addBuilding[i].update();
       addBuilding[i].show();
     }
-
     for (i = addBirds.length - 1; i >= 0; i--) {
       addBirds[i].update();
       addBirds[i].show();
     }
-
     if (frameCount % 300 === 0) {
       addClouds.push(new Cloud);
       addBuilding.push(new Building);
       addBirds.push(new Bird);
     }
-
     if (frameCount % 700 === 0) {
       addClouds.push(new Cloud);
     }
@@ -82,6 +80,15 @@ function draw() {
   //   noLoop();
   // }
 }
+
+// function beginGame() {
+//   image(titleImage, 0, 0, windowWidth, windowHeight);
+//   if(keyCode === ENTER) {
+//     image(scenery, 0, 0, width, height);
+//     addCharacter.fly();
+//     addCharacter.show();
+//   }
+// }
 
 class Sprite {
   update() {
